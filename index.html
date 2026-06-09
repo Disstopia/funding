@@ -675,6 +675,26 @@
     opacity: 1;
     transform: translateY(0);
   }
+
+  /* ─── LANG TOGGLE ─── */
+  .lang-toggle {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .lang-btn {
+    background: none;
+    border: none;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    color: var(--muted);
+    cursor: pointer;
+    padding: 4px 2px;
+    transition: color 0.2s;
+  }
+  .lang-btn.active { color: var(--lilac); }
+  .lang-btn:hover { color: var(--off-white); }
 </style>
 </head>
 <body>
@@ -682,7 +702,14 @@
 <!-- TOPBAR -->
 <header class="topbar">
   <div class="topbar-logo">DISSTOPIA</div>
-  <a href="#tiers" class="topbar-cta">후원하기 →</a>
+  <div style="display:flex;align-items:center;gap:12px;">
+    <div class="lang-toggle">
+      <button class="lang-btn active" data-lang="ko" onclick="setLang('ko')">KO</button>
+      <span style="color:var(--border);font-size:12px;">|</span>
+      <button class="lang-btn" data-lang="en" onclick="setLang('en')">EN</button>
+    </div>
+    <a href="#tiers" class="topbar-cta" data-ko="후원하기 →" data-en="Support →">후원하기 →</a>
+  </div>
 </header>
 
 <!-- HERO -->
@@ -1048,8 +1075,8 @@
         <div class="tier">
           <div class="tier-badge">☕</div>
           <div class="tier-content">
-            <h3>커피 한 잔 값</h3>
-            <p>후원자 명단 등재</p>
+            <h3 data-ko="커피 한 잔 값" data-en="A Cup of Coffee">커피 한 잔 값</h3>
+            <p data-ko="후원자 명단 등재" data-en="Listed on supporters page">후원자 명단 등재</p>
           </div>
           <div class="tier-price">5,000<small>원</small></div>
         </div>
@@ -1057,8 +1084,8 @@
         <div class="tier">
           <div class="tier-badge">🍜</div>
           <div class="tier-content">
-            <h3>밥 한 끼 값</h3>
-            <p>핸드아웃 PDF 택 1 (BDSM 입문 / 애널 101 / 걸섹스 101)</p>
+            <h3 data-ko="밥 한 끼 값" data-en="A Meal">밥 한 끼 값</h3>
+            <p data-ko="핸드아웃 PDF 택 1 (BDSM 입문 / 애널 101 / 걸섹스 101)" data-en="1 Handout PDF of your choice (BDSM Intro / Anal 101 / Girl Sex 101)">핸드아웃 PDF 택 1 (BDSM 입문 / 애널 101 / 걸섹스 101)</p>
           </div>
           <div class="tier-price">10,000<small>원</small></div>
         </div>
@@ -1066,10 +1093,10 @@
         <div class="tier featured">
           <div class="tier-badge">🍻</div>
           <div class="tier-content">
-            <div class="tier-featured-badge">추천</div>
-            <h3>한 잔 값</h3>
-            <p>핸드아웃 PDF 택 1 + <strong>디스토피아 행사 1회 무료 참가권</strong></p>
-            <p style="font-size:12px; color:var(--muted); margin-top:4px;">행사 평균 3~5만원이라 나쁘지 않은 딜이에요 😉</p>
+            <div class="tier-featured-badge" data-ko="추천" data-en="Recommended">추천</div>
+            <h3 data-ko="한 잔 값" data-en="A Drink">한 잔 값</h3>
+            <p data-ko="핸드아웃 PDF 택 1 + 디스토피아 행사 1회 무료 참가권" data-en="1 Handout PDF + 1 Free Ticket to a DISSTOPIA Event">핸드아웃 PDF 택 1 + <strong data-ko="디스토피아 행사 1회 무료 참가권" data-en="1 Free Ticket to a DISSTOPIA Event">디스토피아 행사 1회 무료 참가권</strong></p>
+            <p style="font-size:12px; color:var(--muted); margin-top:4px;" data-ko="행사 평균 3~5만원이라 나쁘지 않은 딜이에요 😉" data-en="Events avg. ₩30–50K — not a bad deal 😉">행사 평균 3~5만원이라 나쁘지 않은 딜이에요 😉</p>
           </div>
           <div class="tier-price">30,000<small>원</small></div>
         </div>
@@ -1077,8 +1104,8 @@
         <div class="tier">
           <div class="tier-badge">✨</div>
           <div class="tier-content">
-            <h3>서포터</h3>
-            <p>핸드아웃 PDF 택 1 + 행사 1회 무료 참가권 + <strong>구매 15% 할인권 (1회)</strong></p>
+            <h3 data-ko="서포터" data-en="Supporter">서포터</h3>
+            <p data-ko="핸드아웃 PDF 택 1 + 행사 1회 무료 참가권 + 구매 15% 할인권 (1회)" data-en="1 Handout PDF + 1 Free Event Ticket + 15% Discount (1-time)">핸드아웃 PDF 택 1 + 행사 1회 무료 참가권 + <strong>구매 15% 할인권 (1회)</strong></p>
           </div>
           <div class="tier-price">50,000<small>원</small></div>
         </div>
@@ -1086,8 +1113,8 @@
         <div class="tier">
           <div class="tier-badge">💜</div>
           <div class="tier-content">
-            <h3>서포터 플러스</h3>
-            <p>핸드아웃 PDF 택 1 + 행사 2회 무료 참가권 + 할인권 (1회) + <strong>워크숍·교류회 건의 우선 고려</strong></p>
+            <h3 data-ko="서포터 플러스" data-en="Supporter Plus">서포터 플러스</h3>
+            <p data-ko="핸드아웃 PDF 택 1 + 행사 2회 무료 참가권 + 할인권 (1회) + 워크숍·교류회 건의 우선 고려" data-en="1 Handout PDF + 2 Free Event Tickets + Discount Coupon + Priority workshop/meetup suggestions">핸드아웃 PDF 택 1 + 행사 2회 무료 참가권 + 할인권 (1회) + <strong>워크숍·교류회 건의 우선 고려</strong></p>
           </div>
           <div class="tier-price">100,000<small>원</small></div>
         </div>
@@ -1095,8 +1122,8 @@
         <div class="tier">
           <div class="tier-badge">🌙</div>
           <div class="tier-content">
-            <h3>든든한 후원자</h3>
-            <p>핸드아웃 PDF 택 1 + 행사 1년 무제한 무료 참가 + 할인권 (1회) + <strong>개인 손편지</strong> + 건의 우선 고려</p>
+            <h3 data-ko="든든한 후원자" data-en="Steady Supporter">든든한 후원자</h3>
+            <p data-ko="핸드아웃 PDF 택 1 + 행사 1년 무제한 무료 참가 + 할인권 (1회) + 개인 손편지 + 건의 우선 고려" data-en="1 Handout PDF + Unlimited free events for 1 year + Discount (1-time) + Personal handwritten letter + Priority suggestions">핸드아웃 PDF 택 1 + 행사 1년 무제한 무료 참가 + 할인권 (1회) + <strong>개인 손편지</strong> + 건의 우선 고려</p>
           </div>
           <div class="tier-price">300,000<small>원</small></div>
         </div>
@@ -1104,8 +1131,8 @@
         <div class="tier">
           <div class="tier-badge">🔥</div>
           <div class="tier-content">
-            <h3>메이저 후원자</h3>
-            <p>핸드아웃 PDF 택 1 + 행사 1년 무제한 무료 참가 + <strong>할인권 1년 무제한</strong> + 손편지 + 건의 우선 고려 + <strong>행사 1회 직접 제안 가능</strong></p>
+            <h3 data-ko="메이저 후원자" data-en="Major Supporter">메이저 후원자</h3>
+            <p data-ko="핸드아웃 PDF 택 1 + 행사 1년 무제한 무료 참가 + 할인권 1년 무제한 + 손편지 + 건의 우선 고려 + 행사 1회 직접 제안 가능" data-en="1 Handout PDF + Unlimited free events for 1 year + Unlimited 15% discount for 1 year + Handwritten letter + Priority suggestions + Right to propose 1 event">핸드아웃 PDF 택 1 + 행사 1년 무제한 무료 참가 + <strong>할인권 1년 무제한</strong> + 손편지 + 건의 우선 고려 + <strong>행사 1회 직접 제안 가능</strong></p>
           </div>
           <div class="tier-price">500,000<small>원</small></div>
         </div>
@@ -1159,8 +1186,8 @@
           퀴어로서 살아가는 데 가이드라인은 없어도, 성교육·성문화적으로는 여러분에게 도움이 되고 싶어요.
           더 안전하고, 더더욱 퀴어를 위한, 국제적인 기준의 전문성을 갖춘 사람으로서 존재하고 싶습니다.
         </p>
-        <div class="letter-sig">디스</div>
-        <div class="letter-sig-sub">DISSTOPIA 운영자 · @disstopia0</div>
+        <div class="letter-sig" data-ko="디스" data-en="May">디스</div>
+        <div class="letter-sig-sub" data-ko="DISSTOPIA 운영자 · @disstopia0" data-en="DISSTOPIA Operator · @disstopia0">DISSTOPIA 운영자 · @disstopia0</div>
       </div>
     </div>
   </div>
@@ -1345,6 +1372,315 @@
       fetchDonations();
     })
     .subscribe();
+
+  // ── Language Toggle
+  const TRANSLATIONS = {
+    ko: {
+      'topbar-cta': '후원하기 →',
+      'hero-eyebrow': '디스의 전문가 도전 펀딩 · 2027 COHORT',
+      'hero-h1': '퀴어를 위한<br><em>성교육 전문가</em>가 되고 싶어요',
+      'hero-sub': '퀴어&BDSM 커뮤니티에서 모두를 위한 공간과 지식을 만들어오다가, 이제는 더 전문적인 교육이 필요하다고 느꼈어요.\n    국내에는 퀴어를 포괄하는 성교육 과정이 없어 해외로 눈을 돌렸고, 그 기회를 잡기 위해 여러분의 도움이 필요합니다.',
+      'pnum-goal-label': '목표 금액',
+      'pnum-raised-label': '모인 금액',
+      'pnum-backers-label': '후원자',
+      'progress-note': '달성률 <strong id="pct">0%</strong> · 2026년 9월 지원 시작 전 모집',
+      'progress-honest': '솔직히 천만 원을 전부 채울 수 있을 거라고 기대하지는 않아요. 그래도 사비로 부담할 수 있는 정도로만 내려와도, 저는 이 기회를 잡을 생각입니다. 🙂',
+      'backers-list-label': '함께해주신 분들 💜',
+      'btn-pay': '카카오페이로 후원하기',
+      'btn-reward': '입금 후 리워드 신청하기',
+      'pay-note': '카카오페이 링크는 모바일에서 열립니다 · PC는 오픈채팅으로 문의해주세요',
+      'why-label': '왜 이게 중요한가',
+      'why-h2': '한국 퀴어 커뮤니티에<br>제대로 된 성교육이 필요합니다',
+      'why-p': '충분한 성교육이 이루어지지 않아 다치거나, 혐오에 흔들리거나, 오해하고, 알고 싶어도 어디서 배워야 할지 몰라 헤매는 퀴어들을 저는 너무 많이 봐왔어요.\n    사람들은 잘못된 성 지식으로 성소수자와 에세머를 혐오하고, 퀴어 당사자들까지도 그 지식을 믿거나 서로를 두려워하거나 손가락질하는 나쁜 굴레에 갇혀 있어요.\n    저는 그 굴레를 끊고 싶습니다.',
+      'impact-1-h': '더 안전한 커뮤니티',
+      'impact-1-p': '퀴어로서 살아가는 데 가이드라인은 없어도, 성교육과 성문화에서만큼은 여러분 곁에 있고 싶어요.',
+      'impact-2-h': '퀴어를 위한 커리큘럼',
+      'impact-2-p': '국내 성교육 강사 양성 과정들은 퀴어를 포괄하지 않아요. 우리 이야기를 우리가 직접 가르쳐야 해요.',
+      'impact-3-h': '국제 기준의 전문성',
+      'impact-3-p': '지금까지 자료와 공부, 세미나로 쌓아온 것 위에 체계적인 전문성을 더하고 싶어요.',
+      'impact-4-h': '지속 가능한 교육 공간',
+      'impact-4-p': '저를 통해 안전하게 커뮤니티를 찾았다, 있어줘서 감사하다는 말을 들을 때마다 더 하고 싶다는 욕심이 생겨요.',
+      'gallery-label': '활동 현장',
+      'gallery-h2': '디스토피아, 현장에서',
+      'gallery-cap-1': '홍익대학교 대학원 강연 (2024) · BDSM적 욕망과 실천',
+      'gallery-cap-2': '서울퀴어문화축제 — 무지개빛 패들',
+      'gallery-cap-3': '퀴퍼 부스 현장 — 킨크 제품 & 액세서리',
+      'about-label': '나는 누구인가',
+      'about-h2': '디스 & 디스토피아',
+      'about-preview': '사회학 전공, 퀴어&BDSM 커뮤니티에서 행사·교육·강연·퀴퍼 부스 운영을 해온 디스토피아 운영자.',
+      'about-toggle': '자세히 보기',
+      'about-p1': '안녕하세요, <strong>디스</strong>입니다. 사회학을 전공하고, 퀴어&BDSM 커뮤니티에서 활동해왔어요.\n        퀴어와 에세머를 위한 행사, 교육, 강연, 퀴퍼 부스 운영, 뭐든 즐거웠고 항상 보람찼어요.',
+      'about-p2': '저를 통해 안전하게 커뮤니티를 찾아서 기쁘다, 있어줘서 감사하다는 말을 들을 때마다 힘이 되고, 더 뭔가를 하고 싶다는 욕심이 생겨요.\n        지금까지도 자료와 공부, 세미나 참여를 통해 계속 공부해왔지만, 이제는 체계적인 교육이 저 자신에게도, 한국 퀴어 커뮤니티에도 꼭 필요하다고 느꼈습니다.',
+      'card-1-h': '사회학 전공',
+      'card-1-p': '섹슈얼리티, 젠더, 커뮤니티를 학문적으로 탐구해온 배경이 현장 교육의 뼈대가 됩니다.',
+      'card-2-h': '퀴어·킨크 커뮤니티',
+      'card-2-p': '서울/대전 퀴퍼 부스 운영, 다수 퀴어 공간 협업, 커뮤니티 안에서 신뢰를 쌓아온 시간들.',
+      'card-3-h': '워크숍 기획·진행',
+      'card-3-p': 'BDSM / 항문 성교 / Girl Sex 101 / 트랜스 여성의 성 등 다양한 커리큘럼을 직접 개발·진행.',
+      'card-4-h': 'DISSTOPIA 운영',
+      'card-4-p': '쇼룸 + 구매대행 + 교육 프로그램을 통합 운영 중인 퀴어 커뮤니티 공간.',
+      'course-label': '이 펀딩이 향하는 곳',
+      'course-h2': '미시건대학교 AASECT 공인<br>성교육 전문가 과정',
+      'course-preview': '국내 성교육 강사 과정들은 퀴어를 포괄하지 않아요. 그래서 미시건대 사회복지대학원의 AASECT 공인 1년 온라인 프로그램을 선택했습니다. 학비 $6,000 (약 천만 원), 지원 시작 2026년 9월 1일.',
+      'course-toggle': '자세히 보기',
+      'tiers-label': '후원 티어',
+      'tiers-h2': '후원 티어',
+      'tiers-p': '원하시는 금액을 자유롭게 입력해주세요. 해당 금액 이하에서 받으실 수 있는 가장 높은 리워드를 바로 알려드릴게요.',
+      'transp-1-label': '학비 투명 공개',
+      'transp-1-p': '후원금은 100% 학비로만 사용되며, 학비 영수증 등 관련 내역을 모두 공개합니다.',
+      'transp-2-label': '초과 후원 기부',
+      'transp-2-p': '목표 금액을 초과한 후원금은 성소수자 단체에 전액 기부합니다.',
+      'transp-3-label': '플랜 B 운영',
+      'transp-3-p': '목표 금액에 미치지 못하면 킨제이 연구소 Human Sexuality Intensive (온라인 $1,500)로 먼저 시작합니다.',
+      'amount-placeholder': '후원 금액 입력',
+      'reward-none-p': '어떤 금액이든 환영해요 💜 후원자 명단에 닉네임을 올려드릴게요.',
+      'pay2-note': '카카오페이 링크는 모바일에서만 열립니다. PC에서는 오픈채팅으로 문의해주세요.\n    입금 후 오픈채팅으로 후원 티어와 닉네임을 알려주시면 리워드를 안내드립니다. 원하시는 리워드가 있다면 별도 협의도 가능해요.',
+      'letter-label': '디스의 말',
+      'letter-h2': '솔직하게 털어놓는 이유',
+      'letter-preview': '더 안전하고, 더 퀴어를 위한, 국제적인 기준의 전문성을 갖춘 사람이 되고 싶어요.',
+      'letter-toggle': '읽어보기',
+      'cta-h2': '함께 만드는<br>퀴어를 위한 성교육',
+      'cta-p': '지금 후원하거나, 이 페이지를 공유해주세요.',
+    },
+    en: {
+      'topbar-cta': 'Support →',
+      'hero-eyebrow': "May's Crowdfunding Journey · 2027 COHORT",
+      'hero-h1': 'I Want to Become a<br><em>Sex Education Specialist</em><br>for Queer Communities',
+      'hero-sub': "I've been creating spaces and resources in the queer & BDSM community for everyone — and I realized I need more specialized training.\n    There's no queer-inclusive sex education program in Korea, so I've turned to overseas options — and to make it happen, I need your help.",
+      'pnum-goal-label': 'Goal',
+      'pnum-raised-label': 'Raised',
+      'pnum-backers-label': 'Supporters',
+      'progress-note': 'Achieved <strong id="pct">0%</strong> · Fundraising before September 2026 application',
+      'progress-honest': "Honestly, I don't expect to reach the full goal. But even if it gets close enough for me to cover the rest personally, I'm taking this opportunity. 🙂",
+      'backers-list-label': 'Those who joined us 💜',
+      'btn-pay': 'Support via KakaoPay',
+      'btn-reward': 'Claim rewards after transfer',
+      'pay-note': 'KakaoPay link opens on mobile · For PC, please contact via OpenChat',
+      'why-label': 'Why This Matters',
+      'why-h2': "Korea's Queer Community<br>Needs Proper Sex Education",
+      'why-p': "I've seen far too many queer people get hurt, shaken by hatred, confused, or lost — because there wasn't adequate sex education for them.\n    People use misinformation to hate on LGBTQ+ and BDSM folks. Even within queer communities, people believe these harmful myths, fear each other, or turn on one another.\n    I want to break that cycle.",
+      'impact-1-h': 'Safer Communities',
+      'impact-1-p': "There's no guidebook for living as a queer person — but in sex ed and sexual culture, I want to be by your side.",
+      'impact-2-h': 'Queer-Centered Curriculum',
+      'impact-2-p': "Domestic sex ed instructor programs don't include queer perspectives. Our stories need to be taught by us.",
+      'impact-3-h': 'International Standards',
+      'impact-3-p': "I want to add systematic expertise on top of the materials, study, and seminars I've accumulated so far.",
+      'impact-4-h': 'Sustainable Educational Space',
+      'impact-4-p': "Every time someone tells me they found the community safely through me, or thanks me for being here — it makes me want to do more.",
+      'gallery-label': 'In Action',
+      'gallery-h2': 'DISSTOPIA, In the Field',
+      'gallery-cap-1': 'Hongik University Graduate Lecture (2024) · BDSM Desire & Practice',
+      'gallery-cap-2': 'Seoul Queer Culture Festival — Rainbow Paddles',
+      'gallery-cap-3': 'Pride Booth — Kink Products & Accessories',
+      'about-label': 'Who I Am',
+      'about-h2': 'May & DISSTOPIA',
+      'about-preview': 'Sociology major & DISSTOPIA operator (May) with experience running events, education, lectures, and pride booths in the queer & BDSM community.',
+      'about-toggle': 'See more',
+      'about-p1': "Hi, I'm <strong>May</strong>. I studied sociology and have been active in the queer & BDSM community.\n        Events, education, lectures, pride booths — all of it has been a joy and always meaningful.",
+      'about-p2': "Whenever someone says they found the community safely through me, or thanks me for being here — that gives me strength and makes me want to do even more.\n        I've kept learning through materials, study, and seminars — but I now feel that systematic education is essential, both for myself and for Korea's queer community.",
+      'card-1-h': 'Sociology Background',
+      'card-1-p': 'An academic background exploring sexuality, gender, and community forms the backbone of my on-the-ground education work.',
+      'card-2-h': 'Queer & Kink Community',
+      'card-2-p': "Running booths at Seoul & Daejeon Pride, collaborating with multiple queer spaces — building trust within the community over time.",
+      'card-3-h': 'Workshop Design & Facilitation',
+      'card-3-p': "Independently developed and facilitated a wide range of curricula: BDSM intro, Anal 101, Girl Sex 101, Trans Women's Sexuality, and more.",
+      'card-4-h': 'Running DISSTOPIA',
+      'card-4-p': 'An integrated queer community space combining a showroom, purchasing proxy service, and educational programming.',
+      'course-label': 'Where This Funding Goes',
+      'course-h2': 'University of Michigan<br>AASECT-Certified Sexuality Education Program',
+      'course-preview': "Domestic sex education instructor programs don't include queer perspectives. So I chose the AASECT-certified 1-year online program at U of M School of Social Work. Tuition: $6,000 (~₩10M). Applications open September 1, 2026.",
+      'course-toggle': 'See more',
+      'tiers-label': 'Support Tiers',
+      'tiers-h2': 'Support Tiers',
+      'tiers-p': "Enter any amount you'd like. We'll show you the highest tier reward available at that amount.",
+      'transp-1-label': 'Full Tuition Transparency',
+      'transp-1-p': '100% of funds go toward tuition only. All related receipts and documentation will be made public.',
+      'transp-2-label': 'Excess Donated',
+      'transp-2-p': 'Any amount raised beyond the goal will be donated in full to LGBTQ+ organizations.',
+      'transp-3-label': 'Plan B in Place',
+      'transp-3-p': "If the goal isn't reached, I'll start with the Kinsey Institute's Human Sexuality Intensive (Online, $1,500).",
+      'amount-placeholder': 'Enter support amount (₩)',
+      'reward-none-p': 'Any amount is welcome 💜 We\'ll add your name to the supporters list.',
+      'pay2-note': "KakaoPay link opens on mobile only. On PC, please contact via OpenChat.\n    After payment, send your tier and nickname via OpenChat and we'll guide you through the rewards. If you have a specific reward in mind, we can arrange it separately.",
+      'letter-label': "A Note from Dis",
+      'letter-h2': "Why I'm Being Honest With You",
+      'letter-preview': "I want to become someone safer, more queer-centered, and equipped with internationally-recognized expertise.",
+      'letter-toggle': 'Read it',
+      'cta-h2': 'Sex Education for Queer People,<br>Built Together',
+      'cta-p': 'Support now, or share this page.',
+    }
+  };
+
+  function setLang(lang) {
+    const t = TRANSLATIONS[lang];
+
+    // topbar cta
+    const cta = document.querySelector('.topbar-cta');
+    if (cta) cta.innerHTML = t['topbar-cta'];
+
+    // hero
+    const eyebrow = document.querySelector('.hero-eyebrow');
+    if (eyebrow) eyebrow.textContent = t['hero-eyebrow'];
+    const h1 = document.querySelector('.hero h1');
+    if (h1) h1.innerHTML = t['hero-h1'];
+    const heroSub = document.querySelector('.hero-sub');
+    if (heroSub) heroSub.textContent = t['hero-sub'];
+
+    // progress
+    document.querySelectorAll('.pnum-label')[0].textContent = t['pnum-goal-label'];
+    document.querySelectorAll('.pnum-label')[1].textContent = t['pnum-raised-label'];
+    document.querySelectorAll('.pnum-label')[2].textContent = t['pnum-backers-label'];
+
+    // progress note / honest note
+    const allProgNotes = document.querySelectorAll('.progress-note');
+    if (allProgNotes[0]) allProgNotes[0].innerHTML = t['progress-note'];
+    const honestNote = document.querySelector('.progress-box p[style]');
+    if (honestNote) honestNote.textContent = t['progress-honest'];
+    const backersLabel = document.querySelector('#backers-list-wrap .pnum-label');
+    if (backersLabel) backersLabel.textContent = t['backers-list-label'];
+
+    // pay buttons
+    const payBtns = document.querySelectorAll('.pay-btn');
+    if (payBtns[0]) payBtns[0].innerHTML = payBtns[0].innerHTML.replace(payBtns[0].childNodes[payBtns[0].childNodes.length-1].textContent, ' ' + t['btn-pay']);
+    if (payBtns[1]) payBtns[1].innerHTML = payBtns[1].innerHTML.replace(payBtns[1].childNodes[payBtns[1].childNodes.length-1].textContent, ' ' + t['btn-reward']);
+    const payNote = document.querySelector('.pay-note');
+    if (payNote) payNote.textContent = t['pay-note'];
+
+    // section labels — collect all
+    const sectionLabels = document.querySelectorAll('.section-label');
+    const labelKeys = ['why-label','gallery-label','about-label','course-label','tiers-label','letter-label'];
+    labelKeys.forEach((key, i) => { if (sectionLabels[i]) sectionLabels[i].textContent = t[key]; });
+
+    // why section
+    const whyH2 = document.querySelector('.section h2');
+    if (whyH2) whyH2.innerHTML = t['why-h2'];
+    const whyP = document.querySelector('.section > p');
+    if (whyP) whyP.textContent = t['why-p'];
+
+    // impact items
+    const impactHs = document.querySelectorAll('.impact-item h4');
+    const impactPs = document.querySelectorAll('.impact-item p');
+    ['impact-1-h','impact-2-h','impact-3-h','impact-4-h'].forEach((k,i)=>{ if(impactHs[i]) impactHs[i].textContent = t[k]; });
+    ['impact-1-p','impact-2-p','impact-3-p','impact-4-p'].forEach((k,i)=>{ if(impactPs[i]) impactPs[i].textContent = t[k]; });
+
+    // gallery
+    const galH2 = document.querySelectorAll('.section h2')[1];
+    if (galH2) galH2.textContent = t['gallery-h2'];
+    const galCaps = document.querySelectorAll('.gallery-cap');
+    [t['gallery-cap-1'], t['gallery-cap-2'], t['gallery-cap-3']].forEach((v,i)=>{ if(galCaps[i]) galCaps[i].textContent = v; });
+
+    // about section
+    const aboutH2 = document.querySelectorAll('.section h2')[2];
+    if (aboutH2) aboutH2.textContent = t['about-h2'];
+    const aboutPreview = document.getElementById('preview-about');
+    if (aboutPreview) aboutPreview.textContent = t['about-preview'];
+    const aboutToggleLabel = document.querySelector('#arrow-about')?.closest('.accordion-toggle')?.querySelector('.toggle-label');
+    if (aboutToggleLabel && !document.getElementById('body-about').classList.contains('open')) aboutToggleLabel.textContent = t['about-toggle'];
+    const aboutPs = document.querySelectorAll('#body-about .accordion-body-inner > p');
+    if (aboutPs[0]) aboutPs[0].innerHTML = t['about-p1'];
+    if (aboutPs[1]) aboutPs[1].innerHTML = t['about-p2'];
+    const cardHs = document.querySelectorAll('.about-card h4');
+    const cardPs = document.querySelectorAll('.about-card p');
+    ['card-1-h','card-2-h','card-3-h','card-4-h'].forEach((k,i)=>{ if(cardHs[i]) cardHs[i].textContent = t[k]; });
+    ['card-1-p','card-2-p','card-3-p','card-4-p'].forEach((k,i)=>{ if(cardPs[i]) cardPs[i].textContent = t[k]; });
+
+    // course section
+    const courseH2 = document.querySelectorAll('.section h2')[3];
+    if (courseH2) courseH2.innerHTML = t['course-h2'];
+    const coursePreview = document.getElementById('preview-course');
+    if (coursePreview) coursePreview.textContent = t['course-preview'];
+    const courseToggleLabel = document.querySelector('#arrow-course')?.closest('.accordion-toggle')?.querySelector('.toggle-label');
+    if (courseToggleLabel && !document.getElementById('body-course').classList.contains('open')) courseToggleLabel.textContent = t['course-toggle'];
+
+    // tiers section
+    const tiersH2 = document.querySelectorAll('#tiers h2')[0];
+    if (tiersH2) tiersH2.textContent = t['tiers-h2'];
+    const tiersP = document.querySelector('#tiers > p');
+    if (tiersP) tiersP.textContent = t['tiers-p'];
+
+    // transparency
+    const transpLabels = document.querySelectorAll('.transparency-grid [style*="font-mono"]');
+    const transpPs = document.querySelectorAll('.transparency-grid p');
+    ['transp-1-label','transp-2-label','transp-3-label'].forEach((k,i)=>{ if(transpLabels[i]) transpLabels[i].textContent = t[k]; });
+    ['transp-1-p','transp-2-p','transp-3-p'].forEach((k,i)=>{ if(transpPs[i]) transpPs[i].textContent = t[k]; });
+
+    // amount placeholder
+    const amountInput = document.getElementById('custom-amount');
+    if (amountInput) amountInput.placeholder = t['amount-placeholder'];
+
+    // reward none
+    const rewardNoneP = document.querySelector('#reward-none p');
+    if (rewardNoneP) rewardNoneP.textContent = t['reward-none-p'];
+
+    // pay2 note (bottom of tiers section)
+    const pay2Note = document.querySelector('section#tiers ~ section p[style], #tiers + div p, section p[style*="font-size:12px"]');
+    // simpler: find last small pay note
+    const allSmallNotes = document.querySelectorAll('p[style*="font-size:12px"]');
+    allSmallNotes.forEach(el => {
+      if (el.textContent.includes('카카오페이') || el.textContent.includes('KakaoPay')) {
+        el.innerHTML = t['pay2-note'].replace('\n    ', '<br>');
+      }
+    });
+
+    // letter section
+    const letterH2 = document.querySelectorAll('.section h2')[4];
+    if (letterH2) letterH2.textContent = t['letter-h2'];
+    const letterPreview = document.getElementById('preview-letter');
+    if (letterPreview) letterPreview.textContent = t['letter-preview'];
+    const letterToggleLabel = document.querySelector('#arrow-letter')?.closest('.accordion-toggle')?.querySelector('.toggle-label');
+    if (letterToggleLabel && !document.getElementById('body-letter').classList.contains('open')) letterToggleLabel.textContent = t['letter-toggle'];
+
+    // CTA
+    const ctaH2 = document.querySelector('.cta-block h2');
+    if (ctaH2) ctaH2.innerHTML = t['cta-h2'];
+    const ctaP = document.querySelector('.cta-block p');
+    if (ctaP) ctaP.textContent = t['cta-p'];
+
+    // lang buttons active state
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+      btn.classList.toggle('active', btn.dataset.lang === lang);
+    });
+
+
+    // tier list - static HTML cards
+    document.querySelectorAll('.tiers [data-ko], #reward-tier-badge[data-ko]').forEach(el => {
+      const val = t[lang === 'en' ? 'en' : 'ko'] ? el.dataset[lang] : el.dataset.ko;
+      const target = el.dataset[lang];
+      if (target !== undefined) {
+        // p나 h3는 innerHTML 유지 (strong 등), data-ko/en에는 plain text만 있으므로 textContent 사용
+        // strong 태그 내부 번역은 별도로 처리됨
+        if (el.tagName === 'P' && el.querySelector('strong')) {
+          // strong이 있는 p: 전체 텍스트를 data-en으로 교체 (plain)
+          el.textContent = target;
+        } else {
+          el.textContent = target;
+        }
+      }
+    });
+
+    // data-ko/en 있는 모든 요소 (tier 외)
+    document.querySelectorAll('[data-ko][data-en]').forEach(el => {
+      if (!el.closest('.tiers') && el.className !== 'tier-featured-badge') {
+        const target = lang === 'en' ? el.dataset.en : el.dataset.ko;
+        if (target !== undefined) el.textContent = target;
+      }
+    });
+
+    // tier 카드 전체: h3, p, featured-badge
+    document.querySelectorAll('.tiers .tier-content h3[data-ko]').forEach(el => {
+      el.textContent = lang === 'en' ? el.dataset.en : el.dataset.ko;
+    });
+    document.querySelectorAll('.tiers .tier-content p[data-ko]').forEach(el => {
+      el.textContent = lang === 'en' ? el.dataset.en : el.dataset.ko;
+    });
+    document.querySelectorAll('.tier-featured-badge[data-ko]').forEach(el => {
+      el.textContent = lang === 'en' ? el.dataset.en : el.dataset.ko;
+    });
+
+    // store preference
+    document.documentElement.lang = lang === 'en' ? 'en' : 'ko';
+  }
+
 </script>
 </body>
 </html>
