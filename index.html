@@ -1325,7 +1325,6 @@
         list.innerHTML = data.map(row => `
           <span class="backer-tag">
             💜 ${row.nickname || '익명'}
-            <span class="backer-amount">${(row.amount || 0).toLocaleString()}원</span>
           </span>
         `).join('');
       } else {
