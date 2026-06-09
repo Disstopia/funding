@@ -1,0 +1,919 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>디스의 성교육 전문가 도전 펀딩 — DISSTOPIA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Noto+Sans+KR:wght@300;400;500;700&family=Space+Mono&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --black: #0e0c0f;
+    --off-white: #f5f0eb;
+    --cream: #ede6dc;
+    --plum: #2b0a2f;
+    --magenta: #c9246e;
+    --coral: #e8604a;
+    --lilac: #c4a8d4;
+    --gold: #d4a843;
+    --muted: #8a7a8e;
+    --border: rgba(196,168,212,0.25);
+    --font-display: 'DM Serif Display', Georgia, serif;
+    --font-body: 'Noto Sans KR', sans-serif;
+    --font-mono: 'Space Mono', monospace;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--black);
+    color: var(--off-white);
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ─── TOP BAR ─── */
+  .topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 40px;
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    background: rgba(14,12,15,0.92);
+    backdrop-filter: blur(12px);
+    z-index: 100;
+  }
+  .topbar-logo {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    letter-spacing: 0.15em;
+    color: var(--lilac);
+    text-transform: uppercase;
+  }
+  .topbar-cta {
+    background: var(--magenta);
+    color: #fff;
+    border: none;
+    padding: 9px 22px;
+    font-family: var(--font-body);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    cursor: pointer;
+    border-radius: 2px;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+  .topbar-cta:hover { background: #a81a58; }
+
+  /* ─── HERO ─── */
+  .hero {
+    padding: 80px 40px 60px;
+    max-width: 820px;
+    margin: 0 auto;
+  }
+  .hero-eyebrow {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: var(--magenta);
+    text-transform: uppercase;
+    margin-bottom: 24px;
+  }
+  .hero h1 {
+    font-family: var(--font-display);
+    font-size: clamp(36px, 6vw, 60px);
+    line-height: 1.1;
+    color: var(--off-white);
+    margin-bottom: 28px;
+  }
+  .hero h1 em {
+    font-style: italic;
+    color: var(--lilac);
+  }
+  .hero-sub {
+    font-size: 17px;
+    color: #c5b8cc;
+    max-width: 600px;
+    line-height: 1.75;
+    margin-bottom: 40px;
+  }
+
+  /* ─── PROGRESS ─── */
+  .progress-box {
+    background: var(--plum);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 28px 32px;
+    max-width: 820px;
+    margin: 0 auto 64px;
+  }
+  .progress-numbers {
+    display: flex;
+    gap: 48px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+  }
+  .pnum-label {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+  .pnum-val {
+    font-family: var(--font-display);
+    font-size: 30px;
+    color: var(--off-white);
+  }
+  .pnum-val span {
+    font-size: 14px;
+    color: var(--muted);
+    margin-left: 4px;
+    font-family: var(--font-body);
+  }
+  .progress-bar-wrap {
+    background: rgba(255,255,255,0.08);
+    border-radius: 3px;
+    height: 6px;
+    overflow: hidden;
+    margin-bottom: 10px;
+  }
+  .progress-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--magenta), var(--coral));
+    border-radius: 3px;
+    width: 0%;
+    transition: width 1.2s cubic-bezier(0.4,0,0.2,1);
+  }
+  .progress-note {
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  /* ─── SECTION LAYOUT ─── */
+  .section {
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 0 40px 72px;
+  }
+  .section-label {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    color: var(--magenta);
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+  .section h2 {
+    font-family: var(--font-display);
+    font-size: clamp(26px, 4vw, 36px);
+    color: var(--off-white);
+    margin-bottom: 24px;
+    line-height: 1.2;
+  }
+  .section p {
+    color: #c5b8cc;
+    font-size: 15.5px;
+    line-height: 1.8;
+    margin-bottom: 16px;
+  }
+  .section p strong {
+    color: var(--off-white);
+    font-weight: 600;
+  }
+
+  /* ─── ABOUT ME ─── */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-top: 32px;
+  }
+  @media (max-width: 600px) { .about-grid { grid-template-columns: 1fr; } }
+  .about-card {
+    background: rgba(43,10,47,0.5);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 20px;
+  }
+  .about-card-icon {
+    font-size: 20px;
+    margin-bottom: 8px;
+  }
+  .about-card h4 {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--lilac);
+    margin-bottom: 6px;
+    letter-spacing: 0.03em;
+  }
+  .about-card p {
+    font-size: 13.5px;
+    color: #a898b0;
+    margin: 0;
+    line-height: 1.6;
+  }
+
+  /* ─── COURSE INFO ─── */
+  .course-box {
+    background: rgba(43,10,47,0.4);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--lilac);
+    border-radius: 4px;
+    padding: 24px 28px;
+    margin: 28px 0;
+  }
+  .course-box h3 {
+    font-family: var(--font-display);
+    font-size: 18px;
+    color: var(--lilac);
+    margin-bottom: 12px;
+  }
+  .course-box ul {
+    list-style: none;
+    padding: 0;
+  }
+  .course-box ul li {
+    font-size: 14px;
+    color: #c5b8cc;
+    padding: 5px 0;
+    padding-left: 16px;
+    position: relative;
+  }
+  .course-box ul li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--magenta);
+    font-size: 12px;
+  }
+
+  /* ─── TIERS ─── */
+  .tiers {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-top: 8px;
+  }
+  .tier {
+    background: var(--plum);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 22px 24px;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 20px;
+    align-items: center;
+    transition: border-color 0.2s, transform 0.15s;
+    cursor: pointer;
+    text-decoration: none;
+    color: inherit;
+  }
+  .tier:hover {
+    border-color: var(--magenta);
+    transform: translateX(3px);
+  }
+  .tier.featured {
+    border-color: var(--magenta);
+    background: rgba(201,36,110,0.12);
+  }
+  .tier-badge {
+    font-family: var(--font-mono);
+    font-size: 18px;
+    color: var(--magenta);
+    min-width: 24px;
+    text-align: center;
+  }
+  .tier-featured-badge {
+    font-size: 10px;
+    font-family: var(--font-mono);
+    background: var(--magenta);
+    color: #fff;
+    padding: 2px 8px;
+    border-radius: 2px;
+    margin-bottom: 6px;
+    display: inline-block;
+    letter-spacing: 0.1em;
+  }
+  .tier-content h3 {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--off-white);
+    margin-bottom: 4px;
+  }
+  .tier-content p {
+    font-size: 13px;
+    color: var(--muted);
+    margin: 0;
+    line-height: 1.5;
+  }
+  .tier-price {
+    font-family: var(--font-display);
+    font-size: 22px;
+    color: var(--gold);
+    text-align: right;
+    white-space: nowrap;
+  }
+  .tier-price small {
+    display: block;
+    font-family: var(--font-body);
+    font-size: 11px;
+    color: var(--muted);
+    font-weight: normal;
+    margin-top: 2px;
+  }
+
+  /* ─── WHY IT MATTERS ─── */
+  .impact-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-top: 28px;
+  }
+  @media (max-width: 600px) { .impact-list { grid-template-columns: 1fr; } }
+  .impact-item {
+    border-top: 2px solid var(--magenta);
+    padding-top: 16px;
+  }
+  .impact-item h4 {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--off-white);
+    margin-bottom: 8px;
+  }
+  .impact-item p {
+    font-size: 13px;
+    color: var(--muted);
+    margin: 0;
+    line-height: 1.6;
+  }
+
+  /* ─── LETTER ─── */
+  .letter {
+    background: rgba(43,10,47,0.3);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 36px 40px;
+    margin-top: 8px;
+  }
+  .letter p {
+    font-size: 15px;
+    color: #c5b8cc;
+    line-height: 1.85;
+    margin-bottom: 20px;
+  }
+  .letter-sig {
+    font-family: var(--font-display);
+    font-size: 22px;
+    font-style: italic;
+    color: var(--lilac);
+    margin-top: 8px;
+  }
+  .letter-sig-sub {
+    font-size: 12px;
+    font-family: var(--font-mono);
+    color: var(--muted);
+    margin-top: 4px;
+    letter-spacing: 0.08em;
+  }
+
+  /* ─── CTA BLOCK ─── */
+  .cta-block {
+    text-align: center;
+    padding: 60px 40px 80px;
+    max-width: 820px;
+    margin: 0 auto;
+  }
+  .cta-block h2 {
+    font-family: var(--font-display);
+    font-size: clamp(28px, 5vw, 44px);
+    color: var(--off-white);
+    margin-bottom: 16px;
+    line-height: 1.2;
+  }
+  .cta-block p {
+    font-size: 15px;
+    color: var(--muted);
+    margin-bottom: 36px;
+  }
+  .cta-buttons {
+    display: flex;
+    gap: 14px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .btn-primary {
+    background: var(--magenta);
+    color: #fff;
+    padding: 14px 36px;
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: 15px;
+    border: none;
+    cursor: pointer;
+    border-radius: 3px;
+    text-decoration: none;
+    transition: background 0.2s;
+    display: inline-block;
+  }
+  .btn-primary:hover { background: #a81a58; }
+  .btn-secondary {
+    background: transparent;
+    color: var(--lilac);
+    padding: 14px 36px;
+    font-family: var(--font-body);
+    font-weight: 500;
+    font-size: 15px;
+    border: 1px solid var(--border);
+    cursor: pointer;
+    border-radius: 3px;
+    text-decoration: none;
+    transition: border-color 0.2s;
+    display: inline-block;
+  }
+  .btn-secondary:hover { border-color: var(--lilac); }
+
+  /* ─── DIVIDER ─── */
+  hr.div {
+    border: none;
+    border-top: 1px solid var(--border);
+    max-width: 820px;
+    margin: 0 auto 64px;
+  }
+
+  /* ─── FOOTER ─── */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 32px 40px;
+    max-width: 820px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  footer .ft-logo {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--muted);
+    letter-spacing: 0.12em;
+  }
+  footer .ft-links {
+    display: flex;
+    gap: 20px;
+  }
+  footer .ft-links a {
+    font-size: 12px;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  footer .ft-links a:hover { color: var(--lilac); }
+
+  /* ─── PAY BUTTON ─── */
+  .pay-row {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+  }
+  .pay-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 24px;
+    border-radius: 4px;
+    font-weight: 700;
+    font-size: 14px;
+    text-decoration: none;
+    transition: opacity 0.2s, transform 0.15s;
+    border: none;
+    cursor: pointer;
+  }
+  .pay-btn:hover { opacity: 0.88; transform: translateY(-1px); }
+  .pay-btn.kakao {
+    background: #FFE812;
+    color: #3A1D1D;
+  }
+  .pay-note {
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  /* ─── COURSE LINK ─── */
+  .course-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    color: var(--lilac);
+    border: 1px solid var(--border);
+    padding: 10px 18px;
+    border-radius: 3px;
+    text-decoration: none;
+    margin-bottom: 24px;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .course-link:hover { border-color: var(--lilac); color: var(--off-white); }
+
+  /* ─── SCROLL ANIM ─── */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>
+</head>
+<body>
+
+<!-- TOPBAR -->
+<header class="topbar">
+  <div class="topbar-logo">DISSTOPIA</div>
+  <a href="#tiers" class="topbar-cta">후원하기 →</a>
+</header>
+
+<!-- HERO -->
+<section class="hero fade-in">
+  <div class="hero-eyebrow">디스의 전문가 도전 펀딩 · 2027 COHORT</div>
+  <h1>성교육을 <em>제대로</em> 배우고 싶어요</h1>
+  <p class="hero-sub">
+    퀴어·킨크 커뮤니티에서 수년간 워크숍을 열어온 디스가, 이제 국제 공인 성교육 전문가 자격(AASECT)에 도전합니다.
+    커뮤니티 곁에 더 단단히 서기 위해 — 여러분의 밀어주기가 필요합니다.
+  </p>
+</section>
+
+<!-- PROGRESS -->
+<div class="progress-box fade-in" style="padding-left:40px;padding-right:40px;max-width:900px;">
+  <div class="progress-numbers">
+    <div>
+      <div class="pnum-label">목표 금액</div>
+      <div class="pnum-val">10,000,000<span>원</span></div>
+    </div>
+    <div>
+      <div class="pnum-label">모인 금액</div>
+      <div class="pnum-val" id="raised-val">0<span>원</span></div>
+    </div>
+    <div>
+      <div class="pnum-label">후원자</div>
+      <div class="pnum-val" id="backers-val">0<span>명</span></div>
+    </div>
+  </div>
+  <div class="progress-bar-wrap">
+    <div class="progress-bar-fill" id="progress-fill"></div>
+  </div>
+  <p class="progress-note">달성률 <strong id="pct">0%</strong> · 2027년 1월 지원 마감 전 모집</p>
+  <div class="pay-row">
+    <a href="https://qr.kakaopay.com/FT8FOUglQ" target="_blank" class="pay-btn kakao">
+      <svg width="18" height="18" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><ellipse cx="12" cy="11.5" rx="10" ry="9" fill="#3A1D1D"/><path d="M12 5.5C8.134 5.5 5 7.91 5 10.875c0 1.856 1.198 3.494 3.01 4.464l-.766 2.856c-.068.252.213.453.432.31l3.31-2.22c.332.04.67.065 1.014.065 3.866 0 7-2.41 7-5.375S15.866 5.5 12 5.5z" fill="#FFE812"/></svg>
+      카카오페이로 후원하기
+    </a>
+    <a href="https://open.kakao.com/o/sA1CKBRe" target="_blank" class="pay-btn" style="background:rgba(255,232,18,0.12);color:#FFE812;border:1px solid rgba(255,232,18,0.3);">
+      <svg width="18" height="18" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><ellipse cx="12" cy="11.5" rx="10" ry="9" fill="none" stroke="#FFE812" stroke-width="1.5"/><path d="M12 5.5C8.134 5.5 5 7.91 5 10.875c0 1.856 1.198 3.494 3.01 4.464l-.766 2.856c-.068.252.213.453.432.31l3.31-2.22c.332.04.67.065 1.014.065 3.866 0 7-2.41 7-5.375S15.866 5.5 12 5.5z" fill="#FFE812"/></svg>
+      입금 후 리워드 신청하기
+    </a>
+  </div>
+</div>
+
+<hr class="div">
+
+<!-- ABOUT ME -->
+<section class="section fade-in">
+  <div class="section-label">나는 누구인가</div>
+  <h2>디스 & 디스토피아</h2>
+  <p>
+    안녕하세요, <strong>디스</strong>입니다. 사회학을 전공하고, 서울 퀴어·킨크 씬에서 수년간 활동해왔어요.
+    2022년부터 <strong>DISSTOPIA(디스토피아)</strong>를 운영하며 성인용품 쇼룸, 구매 대행, 그리고 커뮤니티 교육 프로그램을 함께 이끌고 있습니다.
+  </p>
+  <p>
+    지금까지 서울·대전 퀴어문화축제 부스, KINK&QUEER 협업 워크숍 시리즈, 홍익대학교 초청 강연 등 수십 번의 교육 현장을 만들었어요.
+    BDSM 입문, Girl Sex 101, 트랜스 여성의 성, 항문 성교 워크숍 등 — 사람들이 아무도 가르쳐주지 않았던 것들을 함께 이야기해왔습니다.
+  </p>
+  <div class="about-grid">
+    <div class="about-card">
+      <div class="about-card-icon">🎓</div>
+      <h4>사회학 전공</h4>
+      <p>섹슈얼리티, 젠더, 커뮤니티를 학문적으로 탐구해온 배경이 현장 교육의 뼈대가 됩니다.</p>
+    </div>
+    <div class="about-card">
+      <div class="about-card-icon">🏳️‍🌈</div>
+      <h4>퀴어·킨크 커뮤니티</h4>
+      <p>서울/대전 퀴퍼 부스 운영, 다수 퀴어 공간 협업, 커뮤니티 안에서 신뢰를 쌓아온 시간들.</p>
+    </div>
+    <div class="about-card">
+      <div class="about-card-icon">📚</div>
+      <h4>워크숍 기획·진행</h4>
+      <p>BDSM / 항문 성교 / Girl Sex 101 / 트랜스 여성의 성 등 다양한 커리큘럼을 직접 개발·진행.</p>
+    </div>
+    <div class="about-card">
+      <div class="about-card-icon">🛍️</div>
+      <h4>DISSTOPIA 운영</h4>
+      <p>쇼룸 + 구매대행 + 교육 프로그램을 통합 운영 중인 퀴어 커뮤니티 공간.</p>
+    </div>
+  </div>
+</section>
+
+<!-- COURSE -->
+<section class="section fade-in">
+  <div class="section-label">이 펀딩이 향하는 곳</div>
+  <h2>미시건대학교 AASECT 공인<br>성교육 전문가 과정</h2>
+  <p>
+    University of Michigan School of Social Work의 <strong>Sexuality Education 수료 과정</strong>은
+    북미 최고 권위의 성 전문가 인증 기관 AASECT의 공식 인증을 받은 1년짜리 집중 프로그램이에요.
+    학사 이상 학력자, 성건강 관련 현장 경력자를 대상으로 하며 — 저는 두 조건 모두 충족합니다.
+  </p>
+  <a href="https://ssw.umich.edu/continuing-education/certificate-courses/sexual-health/sexuality-education" target="_blank" class="course-link">
+    ↗ 공식 과정 페이지 보기 — University of Michigan SSW
+  </a>
+  <div class="course-box">
+    <h3>수료 시 취득 가능한 것</h3>
+    <ul>
+      <li>AASECT Sexuality Educator 인증 자격 요건 충족 (165시간)</li>
+      <li>SAR (성적 태도 재정립) 14시간 이수</li>
+      <li>성교육 커리큘럼 설계 심화 훈련 (ATSE 1–4)</li>
+      <li>성건강 핵심 지식 전 영역 이수 (CSHE 1–6)</li>
+      <li>AMA PRA Category 1 CME Credit 최대 165시간</li>
+    </ul>
+  </div>
+  <div class="course-box">
+    <h3>커리큘럼 구성</h3>
+    <ul>
+      <li>성건강 문화적·생물학적 기반 / 성적 지향·젠더 정체성</li>
+      <li>생애주기별 발달·의학적 성건강 / 복잡한 성적 관심사 이해</li>
+      <li>커플 관계의 친밀감과 성 / 성학의 학문적 기초</li>
+      <li>성교육 커리큘럼 설계 이론→실습 / 스킬 빌딩·수업 설계</li>
+      <li>성건강 교육 기술 / 성교육 비즈니스</li>
+    </ul>
+  </div>
+  <p style="font-size:13px; color:var(--muted);">
+    ※ 현재 2026 코호트는 마감되었으며, <strong>2027 코호트 지원을 목표</strong>로 합니다. 학비 총액: $6,000 (약 천만 원).
+  </p>
+</section>
+
+<!-- WHY -->
+<section class="section fade-in">
+  <div class="section-label">왜 이게 중요한가</div>
+  <h2>한국 퀴어 커뮤니티에<br>제대로 된 성교육이 필요합니다</h2>
+  <p>
+    지금 한국에서 퀴어·킨크 특화 성교육을 체계적으로 할 수 있는 사람은 손에 꼽을 정도예요.
+    저는 현장에서 직접 느꼈어요 — 사람들이 얼마나 기본적인 정보에 굶주려 있는지,
+    그리고 그 정보가 얼마나 틀리거나 해로운 방식으로 유통되는지를.
+  </p>
+  <div class="impact-list">
+    <div class="impact-item">
+      <h4>더 안전한 커뮤니티</h4>
+      <p>검증된 성건강 지식으로 더 안전하고 즐거운 성생활을 지원하는 교육 콘텐츠를 만들 수 있어요.</p>
+    </div>
+    <div class="impact-item">
+      <h4>퀴어 특화 커리큘럼</h4>
+      <p>트랜스, 퀴어, 킨크 당사자를 위한 맞춤형 성교육 — 우리 이야기를 우리가 합니다.</p>
+    </div>
+    <div class="impact-item">
+      <h4>국제 기준의 전문성</h4>
+      <p>AASECT 공인 자격은 교육자로서의 신뢰도와 커리큘럼 설계 역량을 공식적으로 증명합니다.</p>
+    </div>
+    <div class="impact-item">
+      <h4>지속 가능한 교육 공간</h4>
+      <p>디스토피아 워크숍 시리즈가 더 깊어지고, 더 넓어지고, 더 오래 이어질 수 있어요.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TIERS -->
+<section class="section fade-in" id="tiers">
+  <div class="section-label">후원 티어</div>
+  <h2>함께 밀어주세요</h2>
+  <p>모든 후원에는 공통 답례품을 드립니다 — 구체적인 내용은 추후 확정 후 안내드려요.</p>
+
+  <p style="font-size:13px; color:var(--muted); margin-top:4px; margin-bottom:0;">
+    공통 답례품은 추후 확정 후 안내드릴 예정이에요. 아래는 각 티어별 추가 리워드입니다.
+  </p>
+
+  <div class="tiers" style="margin-top:28px;">
+
+    <a href="#" class="tier">
+      <div class="tier-badge">☕</div>
+      <div class="tier-content">
+        <h3>커피 한 잔 값</h3>
+        <p>공통 답례품 + 후원자 명단 등재</p>
+      </div>
+      <div class="tier-price">5,000<small>원</small></div>
+    </a>
+
+    <a href="#" class="tier">
+      <div class="tier-badge">🍜</div>
+      <div class="tier-content">
+        <h3>밥 한 끼 값</h3>
+        <p>공통 답례품 + 디스토피아 행사 얼리버드 알림 우선 발송</p>
+      </div>
+      <div class="tier-price">10,000<small>원</small></div>
+    </a>
+
+    <a href="#" class="tier featured">
+      <div class="tier-badge">🍻</div>
+      <div class="tier-content">
+        <div class="tier-featured-badge">POPULAR</div>
+        <h3>한 잔 값</h3>
+        <p>공통 답례품 + <strong>디스토피아 행사 1회 무료 참가권</strong> (워크숍·파티·이벤트 등 모든 행사 적용)</p>
+      </div>
+      <div class="tier-price">30,000<small>원</small></div>
+    </a>
+
+    <a href="#" class="tier">
+      <div class="tier-badge">✨</div>
+      <div class="tier-content">
+        <h3>서포터</h3>
+        <p>공통 답례품 + 행사 1회 무료 참가권 + <strong>디스토피아 구매 15% 할인권 (1회)</strong></p>
+      </div>
+      <div class="tier-price">50,000<small>원</small></div>
+    </a>
+
+    <a href="#" class="tier">
+      <div class="tier-badge">💜</div>
+      <div class="tier-content">
+        <h3>서포터 플러스</h3>
+        <p>공통 답례품 + 행사 2회 무료 참가권 + 구매 15% 할인권 (1회) + 귀국 후 수료 보고 모임 초대</p>
+      </div>
+      <div class="tier-price">100,000<small>원</small></div>
+    </a>
+
+    <a href="#" class="tier">
+      <div class="tier-badge">🌙</div>
+      <div class="tier-content">
+        <h3>든든한 후원자</h3>
+        <p>공통 답례품 + 행사 1년 무제한 무료 참가 + 구매 15% 할인권 (1회) + 개인 손편지</p>
+      </div>
+      <div class="tier-price">300,000<small>원</small></div>
+    </a>
+
+    <a href="#" class="tier">
+      <div class="tier-badge">🔥</div>
+      <div class="tier-content">
+        <h3>메이저 후원자</h3>
+        <p>공통 답례품 + 행사 1년 무제한 무료 참가 + <strong>구매 15% 할인권 (1년 무제한)</strong> + 개인 손편지 + 워크숍 커리큘럼 감수 참여 기회</p>
+      </div>
+      <div class="tier-price">500,000<small>원</small></div>
+    </a>
+
+  </div>
+
+  <div class="pay-row" style="margin-top:20px; flex-wrap:wrap; gap:12px;">
+    <a href="https://qr.kakaopay.com/FT8FOUglQ" target="_blank" class="pay-btn kakao">
+      <svg width="18" height="18" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><ellipse cx="12" cy="11.5" rx="10" ry="9" fill="#3A1D1D"/><path d="M12 5.5C8.134 5.5 5 7.91 5 10.875c0 1.856 1.198 3.494 3.01 4.464l-.766 2.856c-.068.252.213.453.432.31l3.31-2.22c.332.04.67.065 1.014.065 3.866 0 7-2.41 7-5.375S15.866 5.5 12 5.5z" fill="#FFE812"/></svg>
+      카카오페이로 후원하기
+    </a>
+    <a href="https://open.kakao.com/o/sA1CKBRe" target="_blank" class="pay-btn" style="background:rgba(255,232,18,0.12);color:#FFE812;border:1px solid rgba(255,232,18,0.3);">
+      <svg width="18" height="18" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><ellipse cx="12" cy="11.5" rx="10" ry="9" fill="none" stroke="#FFE812" stroke-width="1.5"/><path d="M12 5.5C8.134 5.5 5 7.91 5 10.875c0 1.856 1.198 3.494 3.01 4.464l-.766 2.856c-.068.252.213.453.432.31l3.31-2.22c.332.04.67.065 1.014.065 3.866 0 7-2.41 7-5.375S15.866 5.5 12 5.5z" fill="#FFE812"/></svg>
+      입금 후 리워드 신청하기
+    </a>
+  </div>
+  <p style="font-size:12px; color:var(--muted); margin-top:10px;">
+    입금 후 오픈채팅으로 후원 티어와 닉네임을 알려주시면 리워드를 안내드립니다.
+  </p>
+</section>
+
+<!-- LETTER -->
+<section class="section fade-in">
+  <div class="section-label">디스의 말</div>
+  <h2>솔직하게 털어놓는 이유</h2>
+  <div class="letter">
+    <p>
+      사실 이런 펀딩 페이지를 만드는 게 쉽지 않았어요. 도움을 요청하는 것, 내 꿈을 공개적으로 선언하는 것 — 둘 다 저한테는 용기가 필요한 일이거든요.
+    </p>
+    <p>
+      그런데 계속 생각했어요. 내가 커뮤니티에서 워크숍을 할 때 사람들이 "이런 거 처음 들어봤어요", "왜 아무도 안 가르쳐줬을까요"라고 하는 순간들을.
+      그리고 그 말을 들을 때마다 느끼는 이 감정 — 더 잘하고 싶다, 더 제대로 알고 싶다.
+    </p>
+    <p>
+      미시건대 과정은 그냥 자격증이 아니에요. 1년 동안 성교육을 학문적으로, 실천적으로, 윤리적으로 깊이 배우는 과정이에요.
+      내가 지금까지 현장에서 쌓아온 것들 위에, 이 과정이 더해지면 — 우리 커뮤니티에 돌려드릴 수 있는 게 달라질 거라고 믿어요.
+    </p>
+    <p>
+      커피 한 잔도, 한 달 치 워크숍 후원도 — 여러분의 밀어주기 하나하나가 진심으로 고맙습니다.
+    </p>
+    <div class="letter-sig">— 디스</div>
+    <div class="letter-sig-sub">DISSTOPIA 운영자 · @disstopia0</div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<div class="cta-block fade-in">
+  <h2>함께 만드는<br>더 나은 성교육</h2>
+  <p>지금 후원하거나, 이 페이지를 공유해주세요.</p>
+  <div class="cta-buttons">
+    <a href="#tiers" class="btn-primary">후원 티어 보기</a>
+    <a href="https://instagram.com/disstopia0" target="_blank" class="btn-secondary">@disstopia0 팔로우</a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="ft-logo">DISSTOPIA · @disstopia0</div>
+  <div class="ft-links">
+    <a href="https://instagram.com/disstopia0" target="_blank">Instagram</a>
+    <a href="https://twitter.com/0disstopia0" target="_blank">Twitter/X</a>
+  </div>
+</footer>
+
+<script>
+  // ── Scroll fade-in
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  // ────────────────────────────────────────────────
+  // 구글 시트 연동 모금액 표시
+  // 아래 SHEET_URL을 본인 구글 시트 게시 URL로 교체하세요
+  // (설정 방법은 페이지 하단 주석 참고)
+  // ────────────────────────────────────────────────
+  const SHEET_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vT07bqZHfddz4bpgS650dQoeHC1sUmFpiEaeLAzSjjBulyqM73c6GgULQ0WtvmbNPNzn_UhNMdrIYMP/pub?gid=0&single=true&output=csv';
+  const GOAL = 10000000;
+
+  function updateProgress(raised, backers) {
+    const pct = Math.min(100, Math.round(raised / GOAL * 100));
+    document.getElementById('progress-fill').style.width = pct + '%';
+    document.getElementById('pct').textContent = pct + '%';
+    document.getElementById('raised-val').innerHTML = raised.toLocaleString() + '<span>원</span>';
+    document.getElementById('backers-val').innerHTML = backers.toLocaleString() + '<span>명</span>';
+  }
+
+  async function fetchFromSheet() {
+    // URL이 아직 설정 안 됐으면 0 표시
+    if (SHEET_URL === 'YOUR_GOOGLE_SHEET_CSV_URL') {
+      updateProgress(0, 0);
+      return;
+    }
+    try {
+      const res = await fetch(SHEET_URL);
+      const text = await res.text();
+      // CSV 파싱: 첫 번째 데이터 행의 A열=모금액합계, B열=후원자수
+      const rows = text.trim().split('\n');
+      const cells = rows[1]?.split(',') ?? ['0','0'];
+      const raised = parseInt(cells[0]?.replace(/[^0-9]/g, '') || '0', 10);
+      const backers = parseInt(cells[1]?.replace(/[^0-9]/g, '') || '0', 10);
+      updateProgress(raised, backers);
+    } catch (e) {
+      console.warn('시트 불러오기 실패, 0으로 표시합니다.', e);
+      updateProgress(0, 0);
+    }
+  }
+
+  // 페이지 로드 시 + 5분마다 갱신
+  setTimeout(fetchFromSheet, 300);
+  setInterval(fetchFromSheet, 5 * 60 * 1000);
+</script>
+
+<!--
+════════════════════════════════════════════
+  구글 시트 연동 설정 방법 (5단계)
+════════════════════════════════════════════
+
+1. 구글 스프레드시트 새로 만들기
+   - A1: 모금액합계   B1: 후원자수  (헤더)
+   - A2: =SUM(E:E)   B2: =COUNTA(D:D)  (자동 합산)
+   - D열: 후원자 닉네임 (한 명당 한 행)
+   - E열: 입금액
+
+2. 입금 올 때마다 D열에 닉네임, E열에 금액 추가
+   → A2, B2가 자동으로 업데이트됨
+
+3. 파일 → 공유 → 웹에 게시
+   - 게시 형식: CSV
+   - 시트: 현재 시트
+   → 생성된 URL 복사
+
+4. 이 HTML 파일에서 SHEET_URL 값을 복사한 URL로 교체
+   const SHEET_URL = 'https://docs.google.com/spreadsheets/d/...';
+
+5. 저장 후 배포 — 완료!
+   입금 기록할 때마다 5분 이내 자동 반영됩니다.
+
+════════════════════════════════════════════
+-->
+</body>
+</html>
