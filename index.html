@@ -579,6 +579,35 @@
     font-size: 11px;
   }
 
+  /* ─── TRANSPARENCY GRID ─── */
+  @media (max-width: 600px) {
+    .transparency-grid { grid-template-columns: 1fr !important; }
+  }
+
+  /* ─── QUICK AMOUNT BUTTONS ─── */
+  .quick-btn {
+    background: rgba(43,10,47,0.5);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 6px 14px;
+    color: var(--lilac);
+    font-family: var(--font-body);
+    font-size: 12px;
+    cursor: pointer;
+    transition: background 0.15s, border-color 0.15s, color 0.15s;
+    white-space: nowrap;
+  }
+  .quick-btn:hover, .quick-btn.active {
+    background: rgba(201,36,110,0.18);
+    border-color: var(--magenta);
+    color: var(--off-white);
+  }
+  #custom-amount:focus {
+    border-color: var(--lilac);
+  }
+  #custom-amount::-webkit-inner-spin-button,
+  #custom-amount::-webkit-outer-spin-button { -webkit-appearance: none; }
+
   /* ─── PAY BUTTON ─── */
   .pay-row {
     display: flex;
@@ -853,6 +882,45 @@
       <p style="font-size:13px; color:var(--muted);">
         ※ 현재 2026 코호트는 마감되었으며, <strong>2027 코호트 지원을 목표</strong>로 합니다. 학비 총액: $6,000 (약 천만 원).
       </p>
+
+      <div class="course-box" style="margin-top:16px; border-left-color:var(--gold);">
+        <h3 style="color:var(--gold);">🌱 후원 금액이 부족할 경우 — 플랜 B</h3>
+        <p style="font-size:13.5px; color:#c5b8cc; margin-bottom:12px; line-height:1.7;">
+          미시건대 과정($6,000)에 이르지 못하더라도, 모인 금액으로 먼저 할 수 있는 전문 교육이 있어요.
+        </p>
+
+        <div style="background:rgba(212,168,67,0.07); border:1px solid rgba(212,168,67,0.2); border-radius:4px; padding:18px 20px; margin-bottom:12px;">
+          <div style="font-family:var(--font-mono); font-size:10px; letter-spacing:0.15em; color:var(--gold); margin-bottom:10px; text-transform:uppercase;">Kinsey Institute · Indiana University</div>
+          <div style="font-family:var(--font-display); font-size:17px; color:var(--off-white); margin-bottom:10px;">Human Sexuality Intensive</div>
+          <p style="font-size:13px; color:#c5b8cc; line-height:1.75; margin-bottom:12px;">
+            킨제이 연구소는 인류 역사상 성을 가장 체계적으로 연구해온 기관 중 하나예요. 알프레드 킨제이 박사가 1947년 설립한 이래, 전 세계 성과학 연구의 기준이 되어온 곳입니다.<br><br>
+            <strong style="color:var(--off-white);">Human Sexuality Intensive</strong>는 심리학·상담·의료·사회복지·미디어 등 다양한 배경의 전문가와 일반인 모두를 위한 4일 집중 코스예요. 전 세계 참가자들과 함께 인간 성에 대한 깊은 이해를 쌓을 수 있습니다.
+          </p>
+          <div style="display:flex; flex-wrap:wrap; gap:10px; margin-bottom:14px;">
+            <span style="background:rgba(212,168,67,0.12); border:1px solid rgba(212,168,67,0.25); border-radius:20px; padding:4px 12px; font-size:12px; color:var(--gold);">온라인 $1,500</span>
+            <span style="background:rgba(212,168,67,0.12); border:1px solid rgba(212,168,67,0.25); border-radius:20px; padding:4px 12px; font-size:12px; color:var(--gold);">대면 $2,500</span>
+            <span style="background:rgba(196,168,212,0.1); border:1px solid var(--border); border-radius:20px; padding:4px 12px; font-size:12px; color:var(--lilac);">장학금 최대 $500 지원 가능</span>
+          </div>
+          <ul style="margin-bottom:0;">
+            <li>심리학·상담·의료·법·HR·미디어 등 다양한 분야 전문가 대상</li>
+            <li>미국·브라질·캐나다·독일·레바논 등 전 세계 참가자</li>
+            <li>신진·경력 전문가 모두 환영, 연구비·교육비·커리어 개발 펀드 사용 가능</li>
+          </ul>
+        </div>
+
+        <div style="display:flex; gap:10px; flex-wrap:wrap;">
+          <a href="https://kinseyinstitute.org/learning/human-sexuality-intensive.html" target="_blank" class="course-link" style="display:inline-block;">
+            ↗ Kinsey Institute 공식 소개 페이지
+          </a>
+          <a href="https://events.iu.edu/kinsey/event/2161507-human-sexuality-intensive-summer-session" target="_blank" class="course-link" style="display:inline-block;">
+            ↗ 수강 신청 페이지
+          </a>
+        </div>
+        <p style="font-size:12px; color:var(--muted); margin-top:10px; margin-bottom:0;">
+          후원 금액에 따라 미시건대 과정 → 킨제이 집중 코스 순으로 진행할 계획이에요.
+        </p>
+      </div>
+
       <div class="course-box" style="margin-top:16px; border-left-color:var(--coral);">
         <h3 style="color:var(--coral);">수료 후에는</h3>
         <ul>
@@ -869,83 +937,193 @@
 <section class="section fade-in" id="tiers">
   <div class="section-label">후원 티어</div>
   <h2>후원 티어</h2>
-  <p>1만원 이상 후원 시 아래 세 가지 핸드아웃 자료 (PDF) 중 <strong>1개를 선택</strong>해서 보내드립니다.</p>
-  <ul style="margin-top:8px; padding-left:18px; font-size:13.5px; color:#c5b8cc; line-height:2;">
-    <li>BDSM 입문 (합의, 이론 기초, 본디지 기초이론)</li>
-    <li>애널 101</li>
-    <li>걸섹스 101</li>
-  </ul>
+  <p>원하시는 금액을 자유롭게 입력해주세요. 해당 금액 이하에서 받으실 수 있는 가장 높은 리워드를 바로 알려드릴게요.</p>
 
-  <p style="font-size:13px; color:var(--muted); margin-top:4px; margin-bottom:0;">
-    5,000원 티어는 답례품 없이 후원자 명단에 등재됩니다. 1만원 이상부터 핸드아웃 PDF 1종을 선택해 받으실 수 있어요.
-  </p>
+  <!-- 투명성 공약 -->
+  <div style="
+    background: rgba(196,168,212,0.07);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--lilac);
+    border-radius: 4px;
+    padding: 20px 24px;
+    margin-top: 28px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  " class="transparency-grid">
+    <div>
+      <div style="font-size:18px; margin-bottom:8px;">🧾</div>
+      <div style="font-size:12px; font-family:var(--font-mono); color:var(--lilac); letter-spacing:0.08em; margin-bottom:6px;">학비 투명 공개</div>
+      <p style="font-size:13px; color:#a898b0; margin:0; line-height:1.6;">후원금은 100% 학비로만 사용되며, 학비 영수증 등 관련 내역을 모두 공개합니다.</p>
+    </div>
+    <div>
+      <div style="font-size:18px; margin-bottom:8px;">🌈</div>
+      <div style="font-size:12px; font-family:var(--font-mono); color:var(--lilac); letter-spacing:0.08em; margin-bottom:6px;">초과 후원 기부</div>
+      <p style="font-size:13px; color:#a898b0; margin:0; line-height:1.6;">목표 금액을 초과한 후원금은 성소수자 단체에 전액 기부합니다.</p>
+    </div>
+    <div>
+      <div style="font-size:18px; margin-bottom:8px;">🌱</div>
+      <div style="font-size:12px; font-family:var(--font-mono); color:var(--lilac); letter-spacing:0.08em; margin-bottom:6px;">플랜 B 운영</div>
+      <p style="font-size:13px; color:#a898b0; margin:0; line-height:1.6;">목표 금액에 미치지 못하면 킨제이 연구소 Human Sexuality Intensive (온라인 $1,500)로 먼저 시작합니다.</p>
+    </div>
+  </div>
 
-  <div class="tiers" style="margin-top:28px;">
+  <!-- 금액 입력 -->
+  <div style="margin-top:28px; margin-bottom:8px;">
+    <div style="display:flex; align-items:center; gap:0; max-width:360px;">
+      <input
+        id="custom-amount"
+        type="number"
+        min="0"
+        placeholder="후원 금액 입력"
+        oninput="calcReward()"
+        style="
+          flex:1;
+          background:rgba(43,10,47,0.6);
+          border:1px solid var(--border);
+          border-right:none;
+          border-radius:4px 0 0 4px;
+          padding:13px 16px;
+          color:var(--off-white);
+          font-family:var(--font-body);
+          font-size:15px;
+          outline:none;
+          -moz-appearance:textfield;
+        "
+      />
+      <span style="
+        background:rgba(43,10,47,0.6);
+        border:1px solid var(--border);
+        border-radius:0 4px 4px 0;
+        padding:13px 14px;
+        color:var(--muted);
+        font-size:14px;
+        white-space:nowrap;
+      ">원</span>
+    </div>
 
-    <a href="#" class="tier">
-      <div class="tier-badge">☕</div>
+    <!-- 빠른 선택 버튼 -->
+    <div style="display:flex; flex-wrap:wrap; gap:8px; margin-top:12px;">
+      <button onclick="setAmount(5000)"  class="quick-btn">5,000원</button>
+      <button onclick="setAmount(10000)" class="quick-btn">10,000원</button>
+      <button onclick="setAmount(30000)" class="quick-btn">30,000원</button>
+      <button onclick="setAmount(50000)" class="quick-btn">50,000원</button>
+      <button onclick="setAmount(100000)" class="quick-btn">100,000원</button>
+      <button onclick="setAmount(300000)" class="quick-btn">300,000원</button>
+      <button onclick="setAmount(500000)" class="quick-btn">500,000원</button>
+    </div>
+  </div>
+
+  <!-- 리워드 결과 카드 -->
+  <div id="reward-result" style="display:none; margin-top:24px;">
+    <div id="reward-card" class="tier featured" style="cursor:default; pointer-events:none;">
+      <div class="tier-badge" id="reward-badge"></div>
       <div class="tier-content">
-        <h3>커피 한 잔 값</h3>
-        <p>후원자 명단 등재</p>
+        <div id="reward-tier-badge" class="tier-featured-badge" style="display:none;"></div>
+        <h3 id="reward-name"></h3>
+        <p id="reward-desc"></p>
       </div>
-      <div class="tier-price">5,000<small>원</small></div>
-    </a>
+      <div class="tier-price" id="reward-price" style="display:flex; flex-direction:column; align-items:flex-end; gap:4px;"></div>
+    </div>
+    <p id="reward-note" style="font-size:12px; color:var(--muted); margin-top:10px;"></p>
+  </div>
 
-    <a href="#" class="tier">
-      <div class="tier-badge">🍜</div>
-      <div class="tier-content">
-        <h3>밥 한 끼 값</h3>
-        <p>BDSM 입문 자료 핸드아웃 (PDF)</p>
+  <!-- 소액 안내 (5000원 미만) -->
+  <div id="reward-none" style="display:none; margin-top:20px; padding:18px 22px; border:1px solid var(--border); border-radius:6px; background:rgba(43,10,47,0.3);">
+    <p style="font-size:14px; color:var(--muted); margin:0;">어떤 금액이든 환영해요 💜 후원자 명단에 닉네임을 올려드릴게요.</p>
+  </div>
+
+  <!-- 티어 전체 보기 (접기/펼치기) -->
+  <div style="margin-top:32px;">
+    <button onclick="toggleTierList()" style="
+      background:transparent;
+      border:1px solid var(--border);
+      border-radius:4px;
+      padding:9px 18px;
+      color:var(--muted);
+      font-family:var(--font-mono);
+      font-size:11px;
+      letter-spacing:0.12em;
+      cursor:pointer;
+      display:flex;
+      align-items:center;
+      gap:8px;
+      transition:color 0.2s, border-color 0.2s;
+    " id="tier-list-toggle-btn">
+      <span id="tier-list-label">전체 티어 보기</span>
+      <svg id="tier-list-arrow" width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+
+    <div id="tier-list-body" style="max-height:0; overflow:hidden; transition:max-height 0.45s cubic-bezier(0.4,0,0.2,1), opacity 0.35s ease; opacity:0;">
+      <div class="tiers" style="margin-top:20px;">
+
+        <div class="tier">
+          <div class="tier-badge">☕</div>
+          <div class="tier-content">
+            <h3>커피 한 잔 값</h3>
+            <p>후원자 명단 등재</p>
+          </div>
+          <div class="tier-price">5,000<small>원</small></div>
+        </div>
+
+        <div class="tier">
+          <div class="tier-badge">🍜</div>
+          <div class="tier-content">
+            <h3>밥 한 끼 값</h3>
+            <p>핸드아웃 PDF 택 1 (BDSM 입문 / 애널 101 / 걸섹스 101)</p>
+          </div>
+          <div class="tier-price">10,000<small>원</small></div>
+        </div>
+
+        <div class="tier featured">
+          <div class="tier-badge">🍻</div>
+          <div class="tier-content">
+            <div class="tier-featured-badge">추천</div>
+            <h3>한 잔 값</h3>
+            <p>핸드아웃 PDF 택 1 + <strong>디스토피아 행사 1회 무료 참가권</strong></p>
+            <p style="font-size:12px; color:var(--muted); margin-top:4px;">행사 평균 3~5만원이라 나쁘지 않은 딜이에요 😉</p>
+          </div>
+          <div class="tier-price">30,000<small>원</small></div>
+        </div>
+
+        <div class="tier">
+          <div class="tier-badge">✨</div>
+          <div class="tier-content">
+            <h3>서포터</h3>
+            <p>핸드아웃 PDF 택 1 + 행사 1회 무료 참가권 + <strong>구매 15% 할인권 (1회)</strong></p>
+          </div>
+          <div class="tier-price">50,000<small>원</small></div>
+        </div>
+
+        <div class="tier">
+          <div class="tier-badge">💜</div>
+          <div class="tier-content">
+            <h3>서포터 플러스</h3>
+            <p>핸드아웃 PDF 택 1 + 행사 2회 무료 참가권 + 할인권 (1회) + <strong>워크숍·교류회 건의 우선 고려</strong></p>
+          </div>
+          <div class="tier-price">100,000<small>원</small></div>
+        </div>
+
+        <div class="tier">
+          <div class="tier-badge">🌙</div>
+          <div class="tier-content">
+            <h3>든든한 후원자</h3>
+            <p>핸드아웃 PDF 택 1 + 행사 1년 무제한 무료 참가 + 할인권 (1회) + <strong>개인 손편지</strong> + 건의 우선 고려</p>
+          </div>
+          <div class="tier-price">300,000<small>원</small></div>
+        </div>
+
+        <div class="tier">
+          <div class="tier-badge">🔥</div>
+          <div class="tier-content">
+            <h3>메이저 후원자</h3>
+            <p>핸드아웃 PDF 택 1 + 행사 1년 무제한 무료 참가 + <strong>할인권 1년 무제한</strong> + 손편지 + 건의 우선 고려 + <strong>행사 1회 직접 제안 가능</strong></p>
+          </div>
+          <div class="tier-price">500,000<small>원</small></div>
+        </div>
+
       </div>
-      <div class="tier-price">10,000<small>원</small></div>
-    </a>
-
-    <a href="#" class="tier featured">
-      <div class="tier-badge">🍻</div>
-      <div class="tier-content">
-        <h3>한 잔 값</h3>
-        <p>핸드아웃 PDF 택 1 (BDSM 입문 / 애널 101 / 걸섹스 101) + <strong>디스토피아 행사 1회 무료 참가권</strong> (워크숍·파티·이벤트 등 모든 행사 적용)</p>
-        <p style="font-size:12px; color:var(--muted); margin-top:6px;">디스토피아 행사는 평균 3~5만원이니, 이후 참가 생각이 있다면 나쁘지 않은 딜이에요 😉</p>
-      </div>
-      <div class="tier-price">30,000<small>원</small></div>
-    </a>
-
-    <a href="#" class="tier">
-      <div class="tier-badge">✨</div>
-      <div class="tier-content">
-        <h3>서포터</h3>
-        <p>핸드아웃 PDF 택 1 (BDSM 입문 / 애널 101 / 걸섹스 101) + 행사 1회 무료 참가권 + <strong>디스토피아 구매 15% 할인권 (1회)</strong></p>
-      </div>
-      <div class="tier-price">50,000<small>원</small></div>
-    </a>
-
-    <a href="#" class="tier">
-      <div class="tier-badge">💜</div>
-      <div class="tier-content">
-        <h3>서포터 플러스</h3>
-        <p>핸드아웃 PDF 택 1 (BDSM 입문 / 애널 101 / 걸섹스 101) + 행사 2회 무료 참가권 + 구매 15% 할인권 (1회) + <strong>듣고싶은 워크숍·하고싶은 교류회 건의 시 우선 고려</strong></p>
-      </div>
-      <div class="tier-price">100,000<small>원</small></div>
-    </a>
-
-    <a href="#" class="tier">
-      <div class="tier-badge">🌙</div>
-      <div class="tier-content">
-        <h3>든든한 후원자</h3>
-        <p>핸드아웃 PDF 택 1 (BDSM 입문 / 애널 101 / 걸섹스 101) + 행사 1년 무제한 무료 참가 + 구매 15% 할인권 (1회) + 개인 손편지 + <strong>듣고싶은 워크숍·하고싶은 교류회 건의 시 우선 고려</strong></p>
-      </div>
-      <div class="tier-price">300,000<small>원</small></div>
-    </a>
-
-    <a href="#" class="tier">
-      <div class="tier-badge">🔥</div>
-      <div class="tier-content">
-        <h3>메이저 후원자</h3>
-        <p>핸드아웃 PDF 택 1 (BDSM 입문 / 애널 101 / 걸섹스 101) + 행사 1년 무제한 무료 참가 + <strong>구매 15% 할인권 (1년 무제한)</strong> + 개인 손편지 + 듣고싶은 워크숍·하고싶은 교류회 건의 시 우선 고려 + <strong>하고싶은 행사 1회 디스에게 직접 제안 가능</strong></p>
-      </div>
-      <div class="tier-price">500,000<small>원</small></div>
-    </a>
-
+    </div>
   </div>
 
   <div class="pay-row" style="margin-top:20px; flex-wrap:wrap; gap:12px;">
@@ -1021,7 +1199,109 @@
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
-  // ── Accordion
+  // ── Reward Calculator
+  const TIERS = [
+    {
+      min: 500000, badge: '🔥', name: '메이저 후원자',
+      desc: '핸드아웃 PDF 택 1 + 행사 1년 무제한 무료 참가 + <strong>구매 15% 할인권 (1년 무제한)</strong> + 개인 손편지 + 건의 우선 고려 + <strong>행사 1회 직접 제안 가능</strong>',
+      note: '최고 티어 리워드입니다 🔥', featured: false
+    },
+    {
+      min: 300000, badge: '🌙', name: '든든한 후원자',
+      desc: '핸드아웃 PDF 택 1 + 행사 1년 무제한 무료 참가 + 구매 15% 할인권 (1회) + <strong>개인 손편지</strong> + 건의 우선 고려',
+      note: '', featured: false
+    },
+    {
+      min: 100000, badge: '💜', name: '서포터 플러스',
+      desc: '핸드아웃 PDF 택 1 + 행사 2회 무료 참가권 + 구매 15% 할인권 (1회) + <strong>워크숍·교류회 건의 우선 고려</strong>',
+      note: '', featured: false
+    },
+    {
+      min: 50000, badge: '✨', name: '서포터',
+      desc: '핸드아웃 PDF 택 1 + 행사 1회 무료 참가권 + <strong>구매 15% 할인권 (1회)</strong>',
+      note: '', featured: false
+    },
+    {
+      min: 30000, badge: '🍻', name: '한 잔 값',
+      desc: '핸드아웃 PDF 택 1 + <strong>디스토피아 행사 1회 무료 참가권</strong>',
+      note: '행사 평균 3~5만원이라 나쁘지 않은 딜이에요 😉', featured: true
+    },
+    {
+      min: 10000, badge: '🍜', name: '밥 한 끼 값',
+      desc: '핸드아웃 PDF 택 1 (BDSM 입문 / 애널 101 / 걸섹스 101)',
+      note: '', featured: false
+    },
+    {
+      min: 5000, badge: '☕', name: '커피 한 잔 값',
+      desc: '후원자 명단 등재',
+      note: '', featured: false
+    },
+    {
+      min: 1, badge: '💌', name: '소액 후원',
+      desc: '후원자 명단 등재 — 금액에 관계없이 감사해요 💜',
+      note: '', featured: false
+    },
+  ];
+
+  function calcReward() {
+    const val = parseInt(document.getElementById('custom-amount').value) || 0;
+    const result = document.getElementById('reward-result');
+    const none = document.getElementById('reward-none');
+
+    // 빠른 선택 버튼 active 상태
+    document.querySelectorAll('.quick-btn').forEach(btn => {
+      btn.classList.toggle('active', parseInt(btn.textContent.replace(/[^0-9]/g,'')) === val);
+    });
+
+    if (val <= 0) { result.style.display = 'none'; none.style.display = 'none'; return; }
+
+    none.style.display = 'none';
+    const tier = TIERS.find(t => val >= t.min);
+
+    document.getElementById('reward-badge').textContent = tier.badge;
+    document.getElementById('reward-name').textContent = tier.name;
+    document.getElementById('reward-desc').innerHTML = tier.desc;
+    document.getElementById('reward-note').textContent = tier.note;
+
+    const featBadge = document.getElementById('reward-tier-badge');
+    if (tier.featured) { featBadge.style.display = 'inline-block'; featBadge.textContent = '추천'; }
+    else { featBadge.style.display = 'none'; }
+
+    const priceEl = document.getElementById('reward-price');
+    priceEl.innerHTML = `<span style="font-size:22px; font-family:var(--font-display); color:var(--gold);">${val.toLocaleString()}</span><small style="font-family:var(--font-body); font-size:11px; color:var(--muted);">원 이상 → ${tier.name}</small>`;
+
+    const card = document.getElementById('reward-card');
+    card.className = 'tier' + (tier.featured ? ' featured' : '');
+    card.style.cursor = 'default';
+    card.style.pointerEvents = 'none';
+
+    result.style.display = 'block';
+  }
+
+  function setAmount(n) {
+    document.getElementById('custom-amount').value = n;
+    calcReward();
+  }
+
+  function toggleTierList() {
+    const body = document.getElementById('tier-list-body');
+    const arrow = document.getElementById('tier-list-arrow');
+    const label = document.getElementById('tier-list-label');
+    const isOpen = body.style.maxHeight !== '0px' && body.style.opacity === '1';
+    if (isOpen) {
+      body.style.maxHeight = '0px';
+      body.style.opacity = '0';
+      arrow.style.transform = 'rotate(0deg)';
+      label.textContent = '전체 티어 보기';
+    } else {
+      body.style.maxHeight = '2000px';
+      body.style.opacity = '1';
+      arrow.style.transform = 'rotate(180deg)';
+      label.textContent = '접기';
+    }
+  }
+
+
   function toggleAccordion(id) {
     const body = document.getElementById('body-' + id);
     const arrow = document.getElementById('arrow-' + id);
