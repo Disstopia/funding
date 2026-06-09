@@ -488,6 +488,25 @@
   }
   footer .ft-links a:hover { color: var(--lilac); }
 
+  /* ─── BACKER TAG ─── */
+  .backer-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    background: rgba(196,168,212,0.1);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 4px 12px;
+    font-size: 12px;
+    color: var(--lilac);
+    font-family: var(--font-body);
+    white-space: nowrap;
+  }
+  .backer-tag .backer-amount {
+    color: var(--muted);
+    font-size: 11px;
+  }
+
   /* ─── PAY BUTTON ─── */
   .pay-row {
     display: flex;
@@ -587,6 +606,13 @@
     <div class="progress-bar-fill" id="progress-fill"></div>
   </div>
   <p class="progress-note">달성률 <strong id="pct">0%</strong> · 2026년 9월 지원 마감 전 모집</p>
+
+  <!-- 후원자 닉네임 목록 -->
+  <div id="backers-list-wrap" style="margin-top:18px; display:none;">
+    <div class="pnum-label" style="margin-bottom:10px;">함께해주신 분들 💜</div>
+    <div id="backers-list" style="display:flex; flex-wrap:wrap; gap:8px;"></div>
+  </div>
+
   <div class="pay-row">
     <a href="https://qr.kakaopay.com/FT8FOUglQ" target="_blank" class="pay-btn kakao">
       <svg width="18" height="18" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><ellipse cx="12" cy="11.5" rx="10" ry="9" fill="#3A1D1D"/><path d="M12 5.5C8.134 5.5 5 7.91 5 10.875c0 1.856 1.198 3.494 3.01 4.464l-.766 2.856c-.068.252.213.453.432.31l3.31-2.22c.332.04.67.065 1.014.065 3.866 0 7-2.41 7-5.375S15.866 5.5 12 5.5z" fill="#FFE812"/></svg>
@@ -844,6 +870,7 @@
   </div>
 </footer>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
   // ── Scroll fade-in
   const observer = new IntersectionObserver(entries => {
@@ -851,13 +878,13 @@
   }, { threshold: 0.08 });
   document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
-  // ────────────────────────────────────────────────
-  // 구글 시트 연동 모금액 표시
-  // 아래 SHEET_URL을 본인 구글 시트 게시 URL로 교체하세요
-  // (설정 방법은 페이지 하단 주석 참고)
-  // ────────────────────────────────────────────────
-  const SHEET_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vT07bqZHfddz4bpgS650dQoeHC1sUmFpiEaeLAzSjjBulyqM73c6GgULQ0WtvmbNPNzn_UhNMdrIYMP/pub?gid=0&single=true&output=csv';
+  // ── Supabase 연동
+  const SUPABASE_URL = 'https://qyfecehwrmhqwfadiohb.supabase.co';
+  const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InF5ZmVjZWh3cm1ocXdmYWRpb2hiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODA5NzE4NzUsImV4cCI6MjA5NjU0Nzg3NX0.PYMFe_wYyrCgglZC2fkEzyuaXmJwWR0kHn7vbI8q-Vo';
   const GOAL = 10000000;
+
+  const { createClient } = supabase;
+  const db = createClient(SUPABASE_URL, SUPABASE_KEY);
 
   function updateProgress(raised, backers) {
     const pct = Math.min(100, Math.round(raised / GOAL * 100));
@@ -867,58 +894,47 @@
     document.getElementById('backers-val').innerHTML = backers.toLocaleString() + '<span>명</span>';
   }
 
-  async function fetchFromSheet() {
-    // URL이 아직 설정 안 됐으면 0 표시
-    if (SHEET_URL === 'YOUR_GOOGLE_SHEET_CSV_URL') {
-      updateProgress(0, 0);
-      return;
-    }
+  async function fetchDonations() {
     try {
-      const res = await fetch(SHEET_URL);
-      const text = await res.text();
-      // CSV 파싱: 첫 번째 데이터 행의 A열=모금액합계, B열=후원자수
-      const rows = text.trim().split('\n');
-      const cells = rows[1]?.split(',') ?? ['0','0'];
-      const raised = parseInt(cells[0]?.replace(/[^0-9]/g, '') || '0', 10);
-      const backers = parseInt(cells[1]?.replace(/[^0-9]/g, '') || '0', 10);
+      const { data, error } = await db
+        .from('donations')
+        .select('nickname, amount, created_at')
+        .order('created_at', { ascending: false });
+      if (error) throw error;
+
+      const raised = data.reduce((sum, row) => sum + (row.amount || 0), 0);
+      const backers = data.length;
       updateProgress(raised, backers);
+
+      // 닉네임 목록 렌더링
+      const wrap = document.getElementById('backers-list-wrap');
+      const list = document.getElementById('backers-list');
+      if (data.length > 0) {
+        wrap.style.display = 'block';
+        list.innerHTML = data.map(row => `
+          <span class="backer-tag">
+            💜 ${row.nickname || '익명'}
+            <span class="backer-amount">${(row.amount || 0).toLocaleString()}원</span>
+          </span>
+        `).join('');
+      } else {
+        wrap.style.display = 'none';
+      }
     } catch (e) {
-      console.warn('시트 불러오기 실패, 0으로 표시합니다.', e);
+      console.warn('Supabase 불러오기 실패:', e);
       updateProgress(0, 0);
     }
   }
 
-  // 페이지 로드 시 + 5분마다 갱신
-  setTimeout(fetchFromSheet, 300);
-  setInterval(fetchFromSheet, 5 * 60 * 1000);
+  // 최초 로드
+  fetchDonations();
+
+  // 실시간 변경 감지 — 입금 추가되면 즉시 반영
+  db.channel('donations-changes')
+    .on('postgres_changes', { event: '*', schema: 'public', table: 'donations' }, () => {
+      fetchDonations();
+    })
+    .subscribe();
 </script>
-
-<!--
-════════════════════════════════════════════
-  구글 시트 연동 설정 방법 (5단계)
-════════════════════════════════════════════
-
-1. 구글 스프레드시트 새로 만들기
-   - A1: 모금액합계   B1: 후원자수  (헤더)
-   - A2: =SUM(E:E)   B2: =COUNTA(D:D)  (자동 합산)
-   - D열: 후원자 닉네임 (한 명당 한 행)
-   - E열: 입금액
-
-2. 입금 올 때마다 D열에 닉네임, E열에 금액 추가
-   → A2, B2가 자동으로 업데이트됨
-
-3. 파일 → 공유 → 웹에 게시
-   - 게시 형식: CSV
-   - 시트: 현재 시트
-   → 생성된 URL 복사
-
-4. 이 HTML 파일에서 SHEET_URL 값을 복사한 URL로 교체
-   const SHEET_URL = 'https://docs.google.com/spreadsheets/d/...';
-
-5. 저장 후 배포 — 완료!
-   입금 기록할 때마다 5분 이내 자동 반영됩니다.
-
-════════════════════════════════════════════
--->
 </body>
 </html>
